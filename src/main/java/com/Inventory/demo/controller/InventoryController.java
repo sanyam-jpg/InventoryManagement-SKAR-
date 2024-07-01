@@ -17,12 +17,17 @@ public class InventoryController {
 
     private CreateInventoryService createInventoryService;
 
+    @Autowired
+    InventoryController(CreateInventoryService createInventoryService){
+        this.createInventoryService = createInventoryService;
+    }
+
     @PostMapping("/create")
     public String CreateInventory(@RequestBody ItemRequest itemRequest){
         //successfully captured post
 
         //send ItemRequest to service
-        createInventoryService = new CreateInventoryServiceImpl();
+
         return createInventoryService.createInventory(itemRequest);
         //change return type from string to JSON object
 
